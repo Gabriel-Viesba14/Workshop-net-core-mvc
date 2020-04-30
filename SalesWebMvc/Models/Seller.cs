@@ -9,8 +9,8 @@ namespace SalesWebMvc.Models
         public int Id { get; set; }
         public String Name { get; set; }
         public String Email { get; set; }
-        public DateTime BirthDay { get; set; }
-        public Double Salary { get; set; }
+        public DateTime BirthDate { get; set; }
+        public Double BaseSalary { get; set; }
         public Department Department { get; set; }
         public ICollection<SalesRecord> Sales { get; set; } = new List<SalesRecord>();
 
@@ -24,8 +24,8 @@ namespace SalesWebMvc.Models
             Id = id;
             Name = name;
             Email = email;
-            BirthDay = birthDay;
-            Salary = salary;
+            BirthDate = birthDay;
+            BaseSalary = salary;
             Department = department;
         }
 
@@ -39,7 +39,7 @@ namespace SalesWebMvc.Models
             Sales.Remove(sr);
         }
 
-        public double totalSales(DateTime initial, DateTime final)
+        public double TotalSales(DateTime initial, DateTime final)
         {
             return Sales.Where(sr => sr.Date >= initial && sr.Date <= final).Sum(sr => sr.Amount);
         }
